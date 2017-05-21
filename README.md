@@ -2,4 +2,6 @@
 
 ## Usage
 
+```code java
 ./gradlew bootRun
+code ```
