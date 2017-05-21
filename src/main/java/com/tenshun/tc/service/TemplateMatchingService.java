@@ -8,7 +8,8 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 /**
- * Declares contract for interaction between REST API/Message Broker and Source(File, Database, etc)
+ * Declares contract for interaction between REST API/Message Broker and Source(File, Database, etc).
+ * todo where is contract exactly? need huge refactoring
  * @author Robert S.
  */
 public interface TemplateMatchingService {
