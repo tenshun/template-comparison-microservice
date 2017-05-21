@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 /**
  * Declares contract for interaction between REST API/Message Broker and Source(File, Database, etc).
- * todo where is contract exactly? need huge refactoring
+ * todo: where is contract exactly? need HUGE refactoring
  * @author Robert S.
  */
 public interface TemplateMatchingService {
@@ -47,7 +47,7 @@ public interface TemplateMatchingService {
     /**
      * Put new template in the Source
      * @param template Concatenation of some string(s) with regex
-     * @return Pattern object. todo replace with guid. Because next time client must need to know how to get his template back
+     * @return Pattern object. todo: replace with guid. Because next time client must need to know how to get his template back
      */
     Optional<Pattern> putToTemplateStorage(@NotNull String template);
 
@@ -56,7 +56,7 @@ public interface TemplateMatchingService {
      * @param text Some text that need to compare
      * @param template Concatenation of some string(s) with regex
      * @return
-     * todo Use {@code getPatternByGuid} method to get template
+     * todo: Use {@code getPatternByGuid} method to get template
      */
     boolean compareWithTemplate(@NotNull String text, @NotNull String template);
 }
