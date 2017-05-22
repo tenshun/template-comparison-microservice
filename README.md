@@ -3,6 +3,11 @@
 ## Two ways to communicate with the service
 
 ### RabbitMQ
+#### In development...
+#### TODO
+* configure rabbitmq
+* something else
+
 ### RESTful API
 
 #### /v1: stable
