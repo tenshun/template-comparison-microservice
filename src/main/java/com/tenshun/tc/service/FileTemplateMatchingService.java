@@ -103,8 +103,8 @@ public class FileTemplateMatchingService implements TemplateMatchingService {
 
 
     @Override
-    public boolean compareWithTemplate(@NotNull String text, @NotNull String template) {
-        Pattern validated = validateTemplate(template);
+    public boolean compareWithTemplateByGuid(@NotNull String text, @NotNull String templateGuid) {
+        Pattern validated = validateTemplate(templateGuid);
         Matcher matcher = validated.matcher(text);
         return matcher.find();
     }

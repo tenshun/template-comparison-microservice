@@ -54,9 +54,9 @@ public interface TemplateMatchingService {
     /**
      * Compare text with concrete template.
      * @param text Some text that need to compare
-     * @param template Concatenation of some string(s) with regex
+     * @param templateGuid Concatenation of some string(s) with regex
      * @return
      * todo: Use {@code getPatternByGuid} method to get template
      */
-    boolean compareWithTemplate(@NotNull String text, @NotNull String template);
+    boolean compareWithTemplateByGuid(@NotNull String text, @NotNull String templateGuid);
 }

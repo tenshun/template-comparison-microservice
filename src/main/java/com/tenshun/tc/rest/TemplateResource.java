@@ -39,6 +39,20 @@ public class TemplateResource {
                 .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
+    @PostMapping(path = "/template/{guid}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public @ResponseBody ResponseEntity<?> compareWithTemplateByGuid(@PathVariable(value = "guid") String templateGuid,
+                                                                     @RequestBody Request request) {
+        logger.info("POST request to /v1/template/{guid}: {}" + templateGuid);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+
+        if(templateMatchingService.compareWithTemplateByGuid(request.getText(), request.getGuid())){
+            return new ResponseEntity<>("true", httpHeaders, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("false", httpHeaders, HttpStatus.OK); //todo refactor this
+        }
+    }
+
     @PostMapping(path = "/template", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
     public @ResponseBody ResponseEntity<?> putNewTemplate(@RequestBody Request request) {
         logger.info("POST request to /v1/template: {}", request);
@@ -48,17 +62,6 @@ public class TemplateResource {
         return templateMatchingService.putToTemplateStorage(request.getText())
                 .map(template -> new ResponseEntity<>(template, httpHeaders, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.INTERNAL_SERVER_ERROR));
-    }
-
-    @PostMapping(path = "/template/{guid}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public @ResponseBody ResponseEntity<?> compareWithTemplateByGuid(@PathVariable(value = "guid") String templateGuid) {
-        logger.info("GET request to /v1/template/{guid}: {}" + templateGuid);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-
-        return templateMatchingService.getPatternByGuid(templateGuid)
-                .map(template -> new ResponseEntity<>(template, httpHeaders, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.NOT_FOUND));
     }
 
     @GetMapping(path = "/template/{guid}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
@@ -73,7 +76,7 @@ public class TemplateResource {
     }
 
     @GetMapping(path = "/templates", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public @ResponseBody ResponseEntity<?> templates() {
+    public @ResponseBody ResponseEntity<?> getAllTemplates() {
         logger.info("GET request to /v1/templates");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);

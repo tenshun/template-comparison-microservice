@@ -1,17 +1,14 @@
 package com.tenshun.tc.service;
 
 import com.tenshun.tc.service.dto.CustomMessage;
-import com.tenshun.tc.utils.QueueConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -112,7 +109,7 @@ public class QueueTemplateMatchingService implements TemplateMatchingService {
     }
 
     @Override
-    public boolean compareWithTemplate(String text, String template) {
+    public boolean compareWithTemplateByGuid(String text, String templateGuid) {
         return false;
     }
 }
