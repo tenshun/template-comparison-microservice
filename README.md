@@ -1,6 +1,6 @@
 # Microservice for template comparison
 
-## Two way communication with service
+## Two ways to communicate with the service
 
 ### RabbitMQ
 ### RESTful API
