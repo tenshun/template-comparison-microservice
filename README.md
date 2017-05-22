@@ -1,5 +1,23 @@
 # Microservice for template comparison
 
+## Two way communication with service
+
+### RabbitMQ
+### RESTful API
+
+#### /v1: stable
+```code
+POST /api/v1/process
+POST /api/v1/template/{guid}
+PUT  /api/v1/template
+GET  /api/v1/template/{guid}
+GET  /api/v1/templates
+```
+#### /v2: experimental features
+``` code
+GET /api/v2/process
+```
+
 ## Templates location
 
 src/main/resources/templates.txt
