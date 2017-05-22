@@ -13,3 +13,5 @@ src/main/resources/jmeter/
 ```code
 ./gradlew bootRun
 ```
+## Links
+https://www.cs.princeton.edu/~rs/AlgsDS07/21PatternMatching.pdf
