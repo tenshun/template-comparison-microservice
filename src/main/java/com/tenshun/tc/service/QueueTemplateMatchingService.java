@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.tenshun.tc.utils.QueueConstants.QUEUE;
+import static com.tenshun.tc.service.utils.QueueConstants.QUEUE;
 
 /**
  *

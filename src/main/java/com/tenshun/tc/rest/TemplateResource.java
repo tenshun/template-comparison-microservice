@@ -53,7 +53,7 @@ public class TemplateResource {
         }
     }
 
-    @PostMapping(path = "/template", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PutMapping(path = "/template", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
     public @ResponseBody ResponseEntity<?> putNewTemplate(@RequestBody Request request) {
         logger.info("POST request to /v1/template: {}", request);
         HttpHeaders httpHeaders = new HttpHeaders();

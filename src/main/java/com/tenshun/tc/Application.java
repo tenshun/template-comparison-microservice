@@ -17,9 +17,8 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import static com.tenshun.tc.utils.QueueConstants.EXCHANGE_FOR_PROCESS;
-import static com.tenshun.tc.utils.QueueConstants.QUEUE;
-import static com.tenshun.tc.utils.QueueConstants.ROUTING_KEY;
+import static com.tenshun.tc.service.utils.QueueConstants.EXCHANGE_FOR_PROCESS;
+import static com.tenshun.tc.service.utils.QueueConstants.QUEUE;
 
 @SpringBootApplication
 @EnableRabbit
