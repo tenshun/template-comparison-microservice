@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 /**
  * @author Robert S.
@@ -60,7 +63,13 @@ public class TemplateResource {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
         return templateMatchingService.putToTemplateStorage(request.getText())
-                .map(template -> new ResponseEntity<>(template, httpHeaders, HttpStatus.CREATED))
+                .map(template -> {
+
+                    /*URI location = ServletUriComponentsBuilder
+                            .fromCurrentRequest().path("/{id}")
+                            .buildAndExpand(template.getGuid().toUri());*/
+                    return new ResponseEntity<>(template, httpHeaders, HttpStatus.CREATED);
+                })
                 .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.NOT_MODIFIED));
     }
 
