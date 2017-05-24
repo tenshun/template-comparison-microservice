@@ -28,7 +28,7 @@ public class TemplateResource {
     public TemplateMatchingService templateMatchingService;
 
 
-    @PostMapping(path = "/process", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(path = "/templates/matching/", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
     public @ResponseBody ResponseEntity<?> compareWithTemplates(@RequestBody Request request) {
         logger.info("POST request to compare text with templates : {}", request);
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -61,8 +61,14 @@ public class TemplateResource {
 
         return templateMatchingService.putToTemplateStorage(request.getText())
                 .map(template -> new ResponseEntity<>(template, httpHeaders, HttpStatus.CREATED))
-                .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.INTERNAL_SERVER_ERROR));
+                .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.NOT_MODIFIED));
     }
+
+    /**
+     * Get Template By Guid
+     * @param templateGuid Guid of template.
+     * @return
+     */
 
     @GetMapping(path = "/template/{guid}", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
     public @ResponseBody ResponseEntity<?> getByGuid(@PathVariable(value = "guid") String templateGuid) {
@@ -75,6 +81,11 @@ public class TemplateResource {
                 .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.NOT_FOUND));
     }
 
+    /**
+     * Get All Templates
+     * @return List of templates
+     */
+
     @GetMapping(path = "/templates", produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
     public @ResponseBody ResponseEntity<?> getAllTemplates() {
         logger.info("GET request to /v1/templates");
@@ -83,7 +94,7 @@ public class TemplateResource {
 
         return templateMatchingService.getAllTemplates()
                 .map(templates -> new ResponseEntity<>(templates, httpHeaders, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.NOT_FOUND));
+                .orElse(new ResponseEntity<>(httpHeaders, HttpStatus.NO_CONTENT));
     }
 
 }
