@@ -42,18 +42,54 @@
 * something else
 
 ### RESTful API
-
+### API Endpoints
+#### Template Request
 #### /v1: stable
+##### Get All Templates
+Request
+```code 
+GET /api/v1/templates
+
+Host: localhost:8080
+Auth: 
+Content-type: application/json
+Accept: application/json
+```
+Returns
+```code
+HTTP 200 OK
+[some collection] todo
+```
+
+Error
+```code
+HTTP 204 NO CONTENT
+```
+
+##### Get Template By Guid
+Request
+``` code
+GET  /api/v1/template/{guid}
+```
+Returns
+```code
+HTTP 200 OK
+```
+Error
+```code
+HTTP 404 NOT FOUND
+```
+
+#### TODO
 ```code
 POST /api/v1/process
 POST /api/v1/template/{guid}
 PUT  /api/v1/template
-GET  /api/v1/template/{guid}
-GET  /api/v1/templates
 ```
+
 #### /v2: experimental features
 ``` code
-GET /api/v2/process
+GET /api/v2/templates/processing
 ```
 
 ## Templates location
